@@ -1,0 +1,210 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --bg: #09090b;
+    --card: #141417;
+    --card-hover: #1c1c21;
+    --border: #27272a;
+    --text: #ffffff;
+    --text-muted: #a1a1aa;
+    --accent: #6366f1;
+    --dot: #27272a;
+    --scrollbar-thumb: #3f3f46;
+  }
+
+  .light {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --card-hover: #f1f5f9;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --accent: #4f46e5;
+    --dot: #cbd5e1;
+    --scrollbar-thumb: #cbd5e1;
+  }
+
+  body {
+    @apply transition-colors duration-500 bg-[var(--bg)] text-[var(--text)] font-sans antialiased selection:bg-[var(--accent)] selection:text-white;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 24px 24px;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight text-[var(--text)];
+  }
+}
+
+.bento-card {
+  @apply bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-8 transition-all duration-500 hover:border-[var(--accent)] hover:shadow-[0_0_40px_-15px_rgba(99,102,241,0.2)];
+}
+
+@keyframes marquee-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 25s linear infinite;
+}
+
+.animate-marquee-vertical-fast {
+  animation: marquee-vertical 8s linear infinite;
+}
+
+.animate-marquee-vertical:hover, .animate-marquee-vertical-fast:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: marquee 10s linear infinite;
+}
+
+.animate-marquee-fast:hover {
+  animation-play-state: paused;
+}
+
+.section-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fancy-icon-card {
+  @apply relative flex flex-col items-center justify-center py-6 px-2 rounded-3xl border border-white/5 bg-white/5 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_30px_-10px_currentColor] hover:-translate-y-1;
+}
+
+.fancy-icon-card mat-icon {
+  @apply transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6;
+}
+
+.icon-box-red { @apply bg-red-500/10 text-red-600 border-red-500/20! border; }
+.icon-box-green { @apply bg-emerald-500/10 text-emerald-600 border-emerald-500/20! border; }
+.icon-box-blue { @apply bg-blue-500/10 text-blue-600 border-blue-500/20! border; }
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  gap: 2rem;
+  animation: marquee 50s linear infinite;
+}
+
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
+.mask-fade-edges {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.icon-box-purple { @apply bg-purple-500/10 text-purple-600 border-purple-500/20! border; }
+.icon-box-indigo { @apply bg-indigo-500/10 text-indigo-600 border-indigo-500/20! border; }
+.icon-box-orange { @apply bg-orange-500/10 text-orange-600 border-orange-500/20! border; }
+.icon-box-cyan { @apply bg-cyan-500/10 text-cyan-600 border-cyan-500/20! border; }
+.icon-box-zinc { @apply bg-zinc-500/10 text-zinc-400 border-zinc-500/20! border; }
+
+.projects-scroll-mask {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.tech-icon-container {
+  @apply w-full aspect-square border rounded-2xl flex flex-col items-center justify-center gap-2 p-4 transition-all duration-300 hover:scale-105;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+.nav-capsule {
+  @apply bg-[var(--card)]/90 backdrop-blur-3xl border border-[var(--border)] rounded-full px-2 py-2 flex items-center shadow-2xl;
+}
+
+.active-nav-link {
+  @apply bg-[#F0F2FF] text-[#5E5CE6] font-extrabold shadow-sm;
+}
+
+.light .active-nav-link {
+  @apply bg-[#5E5CE6]/10 text-[#5E5CE6];
+}
+
+.dark .active-nav-link {
+  @apply bg-[#5E5CE6]/20 text-[#5E5CE6];
+}
+
+.reveal-item {
+  opacity: 0;
+}
+
+.marquee-container {
+  @apply flex gap-6 overflow-x-auto py-4;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.marquee-container::-webkit-scrollbar {
+  display: none;
+}
+
+.exp-card {
+  @apply min-w-[300px] bg-[var(--card-hover)] border border-[var(--border)] p-6 rounded-3xl relative flex flex-col gap-4 transition-transform hover:scale-[1.02];
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+

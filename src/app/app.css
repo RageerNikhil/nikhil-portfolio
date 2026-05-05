@@ -1,0 +1,39 @@
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* Custom selection color */
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Smooth section transitions */
+section {
+  @apply transition-all duration-1000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .font-display {
+    letter-spacing: -0.02em;
+  }
+}

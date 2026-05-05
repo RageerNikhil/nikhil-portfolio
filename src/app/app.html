@@ -1,0 +1,67 @@
+<div class="min-h-screen p-4 md:p-8 lg:p-12 selection:bg-[var(--accent)] selection:bg-opacity-30 selection:text-white">
+  <!-- Top Navigation -->
+  <header class="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center w-full px-6">
+    <div class="nav-capsule flex items-center justify-between shadow-2xl w-full max-w-4xl mx-auto px-4 md:px-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 bg-[#5E5CE6] rounded-full flex items-center justify-center font-extrabold text-white shadow-lg shadow-indigo-500/20">
+          <mat-icon class="text-xl">code</mat-icon>
+        </div>
+        <div class="flex flex-col -space-y-1">
+          <span class="font-extrabold text-xs tracking-tighter text-[var(--text)]">nikhil</span>
+          <span class="font-extrabold text-xs tracking-tighter text-[var(--text)]">Rageer</span>
+        </div>
+      </div>
+      
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)]">
+        <a routerLink="/home" routerLinkActive="active-nav-link" class="px-6 py-3 rounded-full hover:text-[var(--text)] transition-all flex items-center gap-2 tracking-[0.2em] font-extrabold">
+          <mat-icon class="text-lg">home</mat-icon> Home
+        </a>
+        <a routerLink="/about" routerLinkActive="active-nav-link" class="px-6 py-3 rounded-full hover:text-[var(--text)] transition-all flex items-center gap-2 tracking-[0.2em] font-extrabold">
+          <mat-icon class="text-lg">person</mat-icon> About
+        </a>
+        <a routerLink="/solutions" routerLinkActive="active-nav-link" class="px-6 py-3 rounded-full hover:text-[var(--text)] transition-all flex items-center gap-2 tracking-[0.2em] font-extrabold">
+          <mat-icon class="text-lg">business_center</mat-icon> Solutions
+        </a>
+        <a routerLink="/contact" routerLinkActive="active-nav-link" class="px-6 py-3 rounded-full hover:text-[var(--text)] transition-all flex items-center gap-2 tracking-[0.2em] font-extrabold">
+          <mat-icon class="text-lg">mail</mat-icon> Contact
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button (click)="toggleTheme()" class="w-10 h-10 flex items-center justify-center border border-[var(--border)] rounded-full hover:bg-[var(--card-hover)] transition-all">
+          <mat-icon class="text-sm text-[var(--text)]">{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+        <button (click)="toggleMenu()" class="md:hidden p-2 text-[var(--text)]">
+          <mat-icon>{{ isMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+        </button>
+        <a routerLink="/contact" class="hidden sm:block bg-[var(--text)] text-[var(--bg)] px-8 py-3.5 rounded-full text-[10px] font-extrabold uppercase tracking-[0.2em] hover:opacity-80 transition-all shadow-xl">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  @if (isMenuOpen()) {
+    <div class="fixed inset-0 z-[60] bg-[var(--bg)]/90 backdrop-blur-xl md:hidden overflow-hidden flex flex-col items-center justify-center gap-8">
+      <button (click)="toggleMenu()" class="absolute top-8 right-8 p-3 bg-[var(--card-hover)] rounded-full">
+        <mat-icon>close</mat-icon>
+      </button>
+      <a routerLink="/home" (click)="toggleMenu()" routerLinkActive="text-[var(--accent)]" class="text-3xl font-bold tracking-tighter">Home</a>
+      <a routerLink="/about" (click)="toggleMenu()" routerLinkActive="text-[var(--accent)]" class="text-3xl font-bold tracking-tighter">About</a>
+      <a routerLink="/solutions" (click)="toggleMenu()" routerLinkActive="text-[var(--accent)]" class="text-3xl font-bold tracking-tighter">Solutions</a>
+      <a routerLink="/contact" (click)="toggleMenu()" routerLinkActive="text-[var(--accent)]" class="text-3xl font-bold tracking-tighter">Contact</a>
+    </div>
+  }
+
+  <main class="max-w-7xl mx-auto pt-24 pb-20">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto py-12 px-6 flex items-center justify-between border-t border-[var(--border)] mt-12 text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-[0.3em]">
+    <p>© 2025–2026 {{ data().profile.name }}. All rights reserved.</p>
+    <p>BUILT WITH ANGULAR & PRECISION</p>
+  </footer>
+</div>
