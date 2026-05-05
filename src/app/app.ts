@@ -6,6 +6,7 @@ import {PORTFOLIO_DATA} from './portfolio.data';
 import {animate} from 'motion';
 import {filter} from 'rxjs/operators';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {injectSpeedInsights} from '@vercel/speed-insights';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,6 +32,9 @@ export class App {
       }
 
       this.initAnimations();
+
+      // Initialize Vercel Speed Insights
+      injectSpeedInsights();
 
       // Re-run animations on route change
       this.router.events.pipe(
